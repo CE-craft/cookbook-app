@@ -1,0 +1,2 @@
+## Add all files to staging
+git add -A
