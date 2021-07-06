@@ -1,0 +1,23 @@
+/*its port of all layouts otherwise component */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #1a1a1a;
+  color: #fff;
+  padding: 2.5rem 8rem;
+
+  & ul {
+    display: flex;
+  }
+  & ul li {
+    list-style-type: none;
+    margin-right: $space-L;
+    font-size: 1.6rem;
+  }
+  &__logo {
+    font-size: $space-M;
+    font-weight: 700;
+    letter-spacing: -0.1rem;
+  }
+}

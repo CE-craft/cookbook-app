@@ -1,0 +1,30 @@
+.tag {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.3rem 0.6rem;
+  color: $black;
+  font-size: 1.2rem;
+  background-color: $faded-yellow;
+  border-radius: 0.4rem;
+  -webkit-border-radius: 0.4rem;
+  -moz-border-radius: 0.4rem;
+  -ms-border-radius: 0.4rem;
+  -o-border-radius: 0.4rem;
+  &--saved {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.3rem 0.6rem;
+    max-height: 2rem;
+    color: $black;
+    font-size: 1.2rem;
+    font-weight: 600;
+    background-color: $yellow;
+    border-radius: 0.4rem;
+    -webkit-border-radius: 0.4rem;
+    -moz-border-radius: 0.4rem;
+    -ms-border-radius: 0.4rem;
+    -o-border-radius: 0.4rem;
+  }
+}

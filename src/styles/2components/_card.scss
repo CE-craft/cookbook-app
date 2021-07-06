@@ -1,0 +1,64 @@
+.card {
+  width: 24rem;
+  height: 32rem;
+  background-color: #eeeeee;
+  margin-bottom: $space-M;
+  box-shadow: 0 3px 6px rgba(#000, 0.16), 0 3px 6px rgba(#000, 0.23);
+  border-radius: 0.8rem;
+  -webkit-border-radius: 0.8rem;
+  -moz-border-radius: 0.8rem;
+  -ms-border-radius: 0.8rem;
+  -o-border-radius: 0.8rem;
+
+  & img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0.8rem;
+  }
+  &__info {
+    border-radius: 0.8rem;
+    height: 12.5rem;
+    margin-top: -12.5rem;
+    padding: 1.5rem;
+    background-color: white;
+    position: relative;
+    z-index: 2;
+    -webkit-border-radius: 0.8rem;
+    -moz-border-radius: 0.8rem;
+    -ms-border-radius: 0.8rem;
+    -o-border-radius: 0.8rem;
+  }
+  &____heading {
+    font-family: "Gothic A1", sans-serif;
+    font-weight: 700;
+    font-size: 1.6rem;
+    margin-bottom: $space-S;
+  }
+  &__btn {
+    font-size: 1.6rem;
+    position: relative;
+    z-index: 4;
+    padding: 0 1.5rem;
+    padding-top: 0.5rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid #dcdcdc;
+    margin-top: -3.2rem;
+  }
+  &__heading-wrapper {
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: space-between;
+  }
+  &__info-desc {
+    font-size: 1.2rem;
+    color: $dark-grey;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: $space-S;
+  }
+}

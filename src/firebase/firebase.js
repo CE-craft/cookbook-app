@@ -1,4 +1,6 @@
-import * as firebase from "firebase";
+import firebase from "firebase/app";
+import "firebase/auth";
+import "firebase/database";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAJ2s-8yqSW_bh23GFoIXm45wnPC704cW8",
@@ -11,9 +13,25 @@ const firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
-export const googleProvider = new firebase.auth.GoogleAuthProvider();
+//export const googleProvider = new firebase.auth.GoogleAuthProvider();
 
-export const firebase = firebase.database();
+export const firebaseData = firebase.database();
+
+// export const createAccount = async (email, password) => {
+//   try {
+//     const userCredential = await firebase
+//       .auth()
+//       .createUserWithEmailAndPassword(email, password);
+
+//     const user = await userCredential.user;
+//     const uid = user.uid;
+
+//     await firebaseData.ref(`users`).push(uid);
+//   } catch (error) {
+//     const errorCode = error.code;
+//     const errorMessage = "Connot use those credentials";
+//   }
+// };
 
 const signIn = async (email, password) => {
   try {
@@ -25,4 +43,9 @@ const signIn = async (email, password) => {
     const errorCode = error.code;
     const errorMessage = "Wrong credentials";
   }
+};
+
+export const realData = async () => {
+  const zbi = await firebaseData.ref("users").once("value");
+  console.log(zbi.val());
 };

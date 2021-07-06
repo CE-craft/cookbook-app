@@ -1,0 +1,18 @@
+.btn {
+  margin: 0;
+  &:hover {
+    color: #eee;
+  }
+  &:active {
+    color: none;
+  }
+  &:visited {
+    color: none;
+  }
+  &--yellow {
+    background-color: yellow;
+  }
+  &__element-btn {
+    background-color: yellowgreen;
+  }
+}

@@ -1,2 +1,49 @@
-## Add all files to staging
+## Add all files to staging you can rerun it is you modified a lot of files
 git add -A
+
+
+## Commit with message
+git commit -m 'Initial commit'
+
+## See changes
+git status
+
+
+## See all commits
+git log
+to exit log mode tap 'Q' or :q
+
+## Return to previous version from master
+git reset --hard HEAD
+
+
+## Return to specific version
+git reset --hard ID
+ID: you can find the ID of your previous commits using 'git log'
+
+## See all branches
+git branch
+tap 'Q' or :q to exit
+
+if moving between commits is a bit dangerous
+
+
+## Create branch
+git branch branch-name
+
+
+## Switch to new branch 
+git checkout branch-name
+each branch will contain a version of the app switching between them will return the code of that version
+
+## Merge a branch with the current breanch
+git merge branch-name
+
+## Adding a repo to push our code
+git remote add origin https://github.com/CE-craft/cookbook-app.git
+
+we can name it anything we want 'origin' is just the standard
+
+
+## Pushin code after commit
+git push origin branch-name

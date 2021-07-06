@@ -1,0 +1,45 @@
+/*
+MIXINGS
+
+////////////// CREAT MIXIN
+@mixin clearfix {
+    &::after {
+        content:"";
+        clear:"both";
+        display:"table";
+    }
+}
+
+////////////// CALL MIXIN
+@include clearfix;
+
+////////////// CREAT MIXIN WITH ARGUMENTS
+@mixin style-link-text($color){
+    text-decoration:none;
+    color:$color;
+}
+
+////////////// CALL MIXIN WITH PARAMETERS
+@include style-link-text(#fff)    //OR any variable color
+
+
+
+
+EXTENDS
+////////////// CREAT EXTENDS
+%btn-placeholder {
+    padding:10px;
+    display:inline-block;
+}
+
+////////////// CALL EXTENDS
+btn-one{@extend %btn-placeholder;}
+btn-two{@extend %btn-placeholder;}
+
+diffrence with mixing it compiles this => 
+btn-one, btn-two{    
+    padding:10px;
+    display:inline-block;
+}
+
+*/

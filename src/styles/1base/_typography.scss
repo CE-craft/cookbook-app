@@ -1,0 +1,30 @@
+@import url("https://fonts.googleapis.com/css2?family=Gothic+A1:wght@400;600;700&family=Playfair+Display:wght@800&display=swap");
+
+body {
+}
+
+.heading-primary {
+  font-family: "Playfair Display", serif;
+  font-size: 5rem;
+  color: $black;
+  max-width: 52.5rem;
+  line-height: 125%;
+  &--main {
+    font-size: 3.6rem;
+  }
+}
+
+.body-text {
+  font-family: "Gothic A1", sans-serif;
+  color: $grey;
+  font-size: 1.6rem;
+  &--dark {
+    color: $black;
+  }
+}
+
+.desc {
+  font-family: "Gothic A1", sans-serif;
+  color: $dark-grey;
+  font-size: 1.2rem;
+}
