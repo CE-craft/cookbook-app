@@ -1,18 +1,26 @@
 import { NavLink } from "react-router-dom";
+import { startLogout } from "../actions/authActions";
 
 const Header = () => {
+  const logoutHandler = (e) => {
+    e.preventDefault();
+    startLogout();
+  };
+
   return (
     <>
-      <header class="header">
-        <div class="header__logo">CookBook</div>
-        <ul class="header__links">
+      <header className="header">
+        <div className="header__logo">CookBook</div>
+        <ul className="header__links">
           <li>
             <NavLink to="/recipeslist">List</NavLink>
           </li>
           <li>
             <NavLink to="/dashboard">Dashboard</NavLink>
           </li>
-          <li>Logout</li>
+          <li>
+            <button onClick={logoutHandler}>Logout</button>
+          </li>
         </ul>
       </header>
     </>

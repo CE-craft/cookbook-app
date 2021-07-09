@@ -1,5 +1,6 @@
 import { connect } from "react-redux";
 import { requestAccountCreation } from "../actions/authActions";
+import { history } from "../helpers/history";
 
 const SignUpForm = (props) => {
   const signInHandler = (e) => {
@@ -10,6 +11,7 @@ const SignUpForm = (props) => {
       const confirmPassword = e.target.elements.confirmPassword.value;
       if (password === confirmPassword) {
         props.requestAccountCreation({ email, password });
+        history.push("/");
       } else {
         const errorMsg = "Wrong password rewrite the same one";
         throw new Error(errorMsg);

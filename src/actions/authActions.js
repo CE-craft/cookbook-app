@@ -2,7 +2,26 @@ import firebase from "firebase/app";
 import { firebaseData } from "../firebase/firebase";
 //import { createUserWithEmailAndPassword } from "firebase/auth";
 
-export const login = (user = {}) => ({ type: "LOGIN", user });
+export const login = (uid) => ({ type: "LOGIN", uid });
+
+export const startLogin = (user) => {
+  const { email, password } = user;
+  console.log(email, password);
+  return async (dispatch) => {
+    try {
+      console.log(email, password);
+      const userCredential = await firebase
+        .auth()
+        .signInWithEmailAndPassword(email, password);
+      const loggedUser = userCredential.user;
+      dispatch(login(loggedUser.uid));
+    } catch (error) {
+      const errorCode = error.code;
+      const errorMessage = "Connot use those credentials";
+      console.log(errorCode, errorMessage);
+    }
+  };
+};
 
 export const logout = () => ({ type: "LOGOUT" });
 
@@ -18,25 +37,40 @@ export const requestAccountCreation = (user) => {
       const user = await userCredential.user;
       const uid = user.uid;
 
-      await firebaseData.ref(`users`).push({ uid, email });
+      const addedUser = await firebaseData.ref(`users`).push({
+        ids: { uid, email },
+        meals: {
+          breakfast: { recipes: "recipie" },
+          launch: { recipes: "recipie" },
+          dinner: { recipes: "recipie" },
+        },
+      });
 
-      // const data = await firebaseData.ref("users").once("value");
-      // const snapUsers = data.val();
+      /////////////////////////////////////////////////////////////////////////////////////////////////
+      /* ****************************CHANGE PUSH ID TO USER ID******************************* */
 
-      // await firebaseData.ref("users").on("child_added", (snapshot) => {
-      //   console.log(snapshot.key, snapshot.val());
-      //   return { ...snapUsers };
-      // });
+      const usersRef = await firebaseData.ref(`users`);
+      const usersRefSnapshot = await usersRef
+        .child(addedUser.key)
+        .once("value");
+      const currentUsers = usersRefSnapshot.val();
 
-      // const child = firebaseData.ref("users").child("43268jfjn7983-347983");
-      // child.once("value", function (snapshot) {
-      //   ref.child("somethingElse").set(snapshot.val());
-      //   child.remove();
-      // });
+      const userData = {};
+      userData[addedUser.key] = null;
+      userData[uid] = currentUsers;
+      await usersRef.update(userData);
     } catch (error) {
       const errorCode = error.code;
       const errorMessage = "Connot use those credentials";
       console.log(errorCode, errorMessage);
     }
   };
+};
+
+export const startLogout = async () => {
+  try {
+    await firebase.auth().signOut();
+  } catch (error) {
+    console.log(error, "coudnt Logout");
+  }
 };

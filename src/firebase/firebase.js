@@ -17,35 +17,17 @@ firebase.initializeApp(firebaseConfig);
 
 export const firebaseData = firebase.database();
 
-// export const createAccount = async (email, password) => {
-//   try {
-//     const userCredential = await firebase
-//       .auth()
-//       .createUserWithEmailAndPassword(email, password);
-
-//     const user = await userCredential.user;
-//     const uid = user.uid;
-
-//     await firebaseData.ref(`users`).push(uid);
-//   } catch (error) {
-//     const errorCode = error.code;
-//     const errorMessage = "Connot use those credentials";
-//   }
-// };
-
-const signIn = async (email, password) => {
-  try {
-    const userCredential = await firebase
-      .auth()
-      .signInWithEmailAndPassword(email, password);
-    const user = await userCredential.user;
-  } catch (error) {
-    const errorCode = error.code;
-    const errorMessage = "Wrong credentials";
-  }
+export const realData = async () => {
+  const data = await firebaseData.ref("users").once("value");
+  console.log("data firebase", data.val());
+  return data;
 };
 
-export const realData = async () => {
-  const zbi = await firebaseData.ref("users").once("value");
-  console.log(zbi.val());
+export const getMealsData = async (uid) => {
+  const mealsData = await realData();
+  const userMeals = mealsData.forEach((user) => {
+    if (user.key === uid) return user.meals;
+  });
+
+  return userMeals;
 };
