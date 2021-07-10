@@ -6,15 +6,13 @@ import { useState } from "react";
 import { connect } from "react-redux";
 
 const ListPage = (props) => {
-  let isSaved = false;
-
   let isOpen = false;
   const [opned, setOpen] = useState(isOpen);
+
   const mealsModal = (open) => {
     setOpen(open);
   };
 
-  console.log("Recipes page", props);
   const title = "Healthy recipies for your daily meals";
   return (
     <>
@@ -28,11 +26,11 @@ const ListPage = (props) => {
           {props.recipes.map((recipe) => {
             return (
               <RecipeCard
+                id={recipe.id}
                 key={recipe.id}
                 image={recipe.image}
                 title={recipe.title}
                 mealsModal={mealsModal}
-                isSaved={isSaved}
               />
             );
           })}

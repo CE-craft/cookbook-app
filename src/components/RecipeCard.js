@@ -1,21 +1,39 @@
 import { ReactComponent as PlusSign } from "../imgs/plusSign.svg";
 import { ReactComponent as MinusSign } from "../imgs/minus.svg";
 import { history } from "../helpers/history";
+import { connect } from "react-redux";
+//import { removeUserRecipe } from "../actions/mealsActions";
+import { holdRecipeStore } from "../actions/holdRecipeActions";
+import { holdRecipe } from "../actions/holdRecipeActions";
+
 //import { ReactComponent as Close } from "../imgs/close.svg";
-//import { useState } from "react";
+import { store } from "../store/store";
 
 const RecipeCard = ({
+  id,
+  recipeId,
   isSaved = false,
   mealsModal,
   image,
   title = "No title",
+  meal,
+  showModalToDelete,
+  removeRecipeFromMeal,
+  ...props
 }) => {
   const showConfirmModal = () => {
-    console.log("confirm");
+    showModalToDelete(true);
+    const recipe = { id: recipeId.toString(), meal: meal };
+    props.dispatch(holdRecipe(recipe));
+    console.log(store.getState());
   };
 
   const showMealsModal = () => {
     mealsModal(true);
+
+    // need to save the ID fetch that specific recipie by ID
+    // Store the recipie to redux
+    props.dispatch(holdRecipeStore(id));
   };
 
   const titleSize = (title) => {
@@ -70,4 +88,4 @@ const RecipeCard = ({
   );
 };
 
-export default RecipeCard;
+export default connect()(RecipeCard);

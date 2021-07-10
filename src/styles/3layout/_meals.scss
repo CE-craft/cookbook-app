@@ -1,0 +1,34 @@
+.meal {
+  display: flex;
+  flex-direction: column;
+  &__heading {
+    font-family: "Playfair Display", serif;
+    font-size: 3.6rem;
+    margin-bottom: $space-S;
+  }
+  &__tags {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  &__recipes {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  }
+  &__empty {
+    margin-bottom: $space-XXL;
+    font-size: 1.6rem;
+    color: $dark-grey;
+  }
+}
+.meal .tag {
+  margin-right: $space-S;
+  margin-bottom: $space-S;
+}
+
+.meal .line {
+  background-color: $light-grey;
+  width: 100%;
+  height: 1px;
+  margin-bottom: $space-M;
+}

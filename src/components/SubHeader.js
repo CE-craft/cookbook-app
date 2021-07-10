@@ -6,11 +6,7 @@ const SubHeader = (props) => {
     <div className="sub-header">
       <Container>
         <h1 className="heading-primary">{props.heading}</h1>
-        {props.description ? (
-          <p>lorem ipsum vfzevffez ze vzedvze vzev zev zvzevfevczedc</p>
-        ) : (
-          ""
-        )}
+        {props.description ? <p>{props.description}</p> : ""}
         {props.link ? <Link to="/dashboard">Visit your dashboard</Link> : ""}
       </Container>
     </div>

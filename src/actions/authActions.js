@@ -6,10 +6,9 @@ export const login = (uid) => ({ type: "LOGIN", uid });
 
 export const startLogin = (user) => {
   const { email, password } = user;
-  console.log(email, password);
+
   return async (dispatch) => {
     try {
-      console.log(email, password);
       const userCredential = await firebase
         .auth()
         .signInWithEmailAndPassword(email, password);
@@ -40,9 +39,9 @@ export const requestAccountCreation = (user) => {
       const addedUser = await firebaseData.ref(`users`).push({
         ids: { uid, email },
         meals: {
-          breakfast: { recipes: "recipie" },
-          launch: { recipes: "recipie" },
-          dinner: { recipes: "recipie" },
+          breakfast: { recipes: "recipe" },
+          launch: { recipes: "recipe" },
+          dinner: { recipes: "recipe" },
         },
       });
 

@@ -1,8 +1,27 @@
 import { ReactComponent as PlusSign } from "../imgs/plusSign.svg";
 import { ReactComponent as Close } from "../imgs/close.svg";
+import { caps } from "../helpers/firstLetterCaps";
+import { saveRecipeFirebase } from "../actions/holdRecipeActions";
+import { connect } from "react-redux";
+import { store } from "../store/store";
 
-const AddToMealsModal = ({ givenClass, mealsModal }) => {
-  const closeMealsModal = () => mealsModal(false);
+const AddToMealsModal = ({ givenClass, mealsModal, ...props }) => {
+  const meals = Object.keys(props.meals);
+
+  // const saveRecipeToMeal = (e) => {
+  //   const meal = e.target.dataset.meal;
+  //   console.log(meal);
+  //   const recipe = props.holdrecipe;
+  //   const uid = props.uid;
+
+  //   props.dispatch(saveRecipeFirebase(recipe, uid, meal));
+  //   console.log(store.getState());
+  // };
+
+  const closeMealsModal = () => {
+    mealsModal(false);
+    // if closed remove that saved recipe we get from list
+  };
   return (
     <>
       <div className={givenClass}>
@@ -15,14 +34,32 @@ const AddToMealsModal = ({ givenClass, mealsModal }) => {
             </div>
           </div>
           <p>Select the meal where you want to add the recipe</p>
+
           <div className="modal-widow__list">
-            <div className="modal-widow__list-item">
-              <h3 className="modal-widow__list-item__heading">Breakfast</h3>
-              <div className="btn-large">
-                <PlusSign />
+            {meals.map((meal) => (
+              <div key={meal} className="modal-widow__list-item">
+                <h3 className="modal-widow__list-item__heading">
+                  {caps(meal)}
+                </h3>
+                <div
+                  onClick={(e) => {
+                    /*const meal = e.target.dataset.meal;*/
+                    console.log(meal);
+                    const recipe = props.holdrecipe;
+                    const uid = props.uid;
+
+                    props.dispatch(saveRecipeFirebase(recipe, uid, meal));
+                    console.log(store.getState());
+                  }}
+                  data-meal={meal}
+                  className="btn-large"
+                >
+                  <PlusSign />
+                </div>
               </div>
-            </div>
-            <div className="modal-widow__list-item">
+            ))}
+
+            {/* <div className="modal-widow__list-item">
               <h3 className="modal-widow__list-item__heading">Launch</h3>
               <div className="btn-large">
                 <PlusSign />
@@ -33,7 +70,7 @@ const AddToMealsModal = ({ givenClass, mealsModal }) => {
               <div className="btn-large">
                 <PlusSign />
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
@@ -41,4 +78,10 @@ const AddToMealsModal = ({ givenClass, mealsModal }) => {
   );
 };
 
-export default AddToMealsModal;
+const mapStateToProps = (state) => ({
+  meals: state.meals,
+  holdrecipe: state.holdrecipe,
+  uid: state.auth.uid,
+});
+
+export default connect(mapStateToProps)(AddToMealsModal);

@@ -13,7 +13,15 @@ export const getRecipesListData = async (recipesNum = RECIPIES_DEFAULT) => {
   );
 
   const recipesData = await data.json();
-  console.log(recipesData);
+  //console.log(recipesData);
 
   return recipesData;
+};
+
+export const getRecipe = async (id) => {
+  const recipe = await fetch(
+    `https://api.spoonacular.com/recipes/${id}/information${API_KEY}`
+  );
+  const recipieInfo = await recipe.json();
+  return recipieInfo;
 };

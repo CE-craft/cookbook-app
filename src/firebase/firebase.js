@@ -13,21 +13,23 @@ const firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
-//export const googleProvider = new firebase.auth.GoogleAuthProvider();
-
 export const firebaseData = firebase.database();
 
 export const realData = async () => {
   const data = await firebaseData.ref("users").once("value");
-  console.log("data firebase", data.val());
+
   return data;
 };
 
 export const getMealsData = async (uid) => {
-  const mealsData = await realData();
-  const userMeals = mealsData.forEach((user) => {
-    if (user.key === uid) return user.meals;
+  const data = await firebaseData.ref("users").once("value");
+
+  let meals = {};
+  data.forEach((user) => {
+    if (user.key === uid) {
+      return (meals = { ...user.val().meals });
+    }
   });
 
-  return userMeals;
+  return meals;
 };
