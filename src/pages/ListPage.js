@@ -2,6 +2,7 @@ import RecipeCard from "../components/RecipeCard";
 import SubHeader from "../components/SubHeader";
 import Container from "../components/Container";
 import AddToMealsModal from "../components/AddToMealsModal";
+import FiltersArea from "../components/FiltersArea";
 import { useState } from "react";
 import { connect } from "react-redux";
 
@@ -22,6 +23,7 @@ const ListPage = (props) => {
       />
       <SubHeader heading={title} />
       <Container>
+        <FiltersArea />
         <div className="list-grid">
           {props.recipes.map((recipe) => {
             return (

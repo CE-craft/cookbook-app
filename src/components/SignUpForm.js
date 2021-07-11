@@ -23,9 +23,14 @@ const SignUpForm = (props) => {
 
   return (
     <form onSubmit={signInHandler}>
-      <input type="email" required name="email" />
-      <input type="password" required name="password" />
-      <input type="password" required name="confirmPassword" />
+      <input className="input-field" type="email" required name="email" />
+      <input className="input-field" type="password" required name="password" />
+      <input
+        className="input-field"
+        type="password"
+        required
+        name="confirmPassword"
+      />
       <button>Sign in</button>
     </form>
   );

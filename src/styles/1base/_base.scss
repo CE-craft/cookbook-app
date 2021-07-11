@@ -34,6 +34,57 @@ a:active {
   color: inherit;
 }
 
+input {
+  border: none;
+  outline: none;
+}
+input:focus {
+  border: none;
+  outline: none;
+}
+input:active {
+  border: none;
+  outline: none;
+}
+
+button {
+  border: none;
+  outline: none;
+}
+button:focus {
+  border: none;
+  outline: none;
+}
+button:active {
+  border: none;
+  outline: none;
+}
+button:hover {
+  border: none;
+  outline: none;
+}
+input:active {
+  border: none;
+  outline: none;
+}
+
+select {
+  border: none;
+  outline: none;
+}
+select:focus {
+  border: none;
+  outline: none;
+}
+select:active {
+  border: none;
+  outline: none;
+}
+select:hover {
+  border: none;
+  outline: none;
+}
+
 .hidden {
   display: none;
 }

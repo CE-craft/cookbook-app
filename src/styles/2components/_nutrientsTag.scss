@@ -1,0 +1,21 @@
+.nutrient-tag {
+  width: 12rem;
+  height: 12rem;
+  max-width: 12rem;
+  max-height: 12rem;
+  background-color: $faded-yellow;
+  padding: $space-L;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  justify-items: center;
+  & p {
+    font-size: 1.6rem;
+    color: $dark-grey;
+  }
+  &h2 {
+    font-size: 3.6rem;
+    font-weight: 800;
+    color: $black;
+  }
+}

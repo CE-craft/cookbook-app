@@ -10,7 +10,7 @@ const SavedMealList = ({
 }) => {
   let recipesArray = [];
 
-  if (recipesList.recipes !== "recipe" || recipesList.recipes !== "N")
+  if (recipesList.recipes !== "recipe")
     recipesArray = Object.values(recipesList);
 
   return (
@@ -23,7 +23,7 @@ const SavedMealList = ({
       </div>
       <div className="line"></div>
       <div className="meal__recipes">
-        {recipesList === "recipe" || recipesList === "N" ? (
+        {recipesList === "recipe" ? (
           <p className="meal__empty" key={randomId()}>
             No recipes added
           </p>

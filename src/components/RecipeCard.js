@@ -1,5 +1,6 @@
 import { ReactComponent as PlusSign } from "../imgs/plusSign.svg";
 import { ReactComponent as MinusSign } from "../imgs/minus.svg";
+import { Link } from "react-router-dom";
 import { history } from "../helpers/history";
 import { connect } from "react-redux";
 //import { removeUserRecipe } from "../actions/mealsActions";
@@ -59,7 +60,9 @@ const RecipeCard = ({
       />
       <div className={"card__info"}>
         <div className="card__heading-wrapper">
-          <h3 className="card__heading">{titleSize(title)}</h3>
+          <h3 className="card__heading">
+            <Link to={`/recipe/${recipeId}`}> {titleSize(title)}</Link>
+          </h3>
           <span className={isSaved ? "tag--saved" : "hidden"}>Saved</span>
         </div>
 

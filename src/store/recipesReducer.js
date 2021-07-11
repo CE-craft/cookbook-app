@@ -3,7 +3,6 @@ export const recipesReducer = (state = {}, action) => {
     case "GET_RECIPIES":
       return {
         recipes: [...action.recipes],
-        page: action.recipesPerPage,
       };
     default:
       return state;

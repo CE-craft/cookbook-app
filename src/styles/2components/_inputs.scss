@@ -1,0 +1,26 @@
+.input-field {
+  border: 1px $light-grey solid;
+  color: $black;
+  background-color: $white;
+  font-size: 1.6rem;
+  max-height: 5rem;
+  padding: 1.5rem;
+  border-radius: 0.8rem;
+  -webkit-border-radius: 0.8rem;
+  -moz-border-radius: 0.8rem;
+  -ms-border-radius: 0.8rem;
+  -o-border-radius: 0.8rem;
+  transition: 0.3s ease-in-out;
+  -webkit-transition: 0.3s ease-in-out;
+  -moz-transition: 0.3s ease-in-out;
+  -ms-transition: 0.3s ease-in-out;
+  -o-transition: 0.3s ease-in-out;
+}
+
+.input-field:hover {
+  border: 1px solid $grey;
+}
+
+.input-field:focus {
+  border: 1px solid $black;
+}

@@ -9,7 +9,7 @@ import { holdRecipe } from "../actions/holdRecipeActions";
 
 const Dashboard = (props) => {
   const meals = Object.keys(props.meals);
-  console.log("Dashboard props ", props);
+  //  console.log("Dashboard props ", props);
 
   const isOpen = false;
   const [opned, setOpen] = useState(isOpen);

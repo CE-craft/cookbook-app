@@ -12,8 +12,8 @@ const LoginForm = (props) => {
   };
   return (
     <form onSubmit={onSubmitHandler}>
-      <input type="email" name="email" />
-      <input type="password" name="password" />
+      <input className="input-field" type="email" name="email" />
+      <input className="input-field" type="password" name="password" />
       <button>Login</button>
     </form>
   );

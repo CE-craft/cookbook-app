@@ -1,0 +1,15 @@
+.ingredient {
+  border-top: 1px solid $black;
+  display: grid;
+  grid-template-columns: 1fr 1fr 3fr;
+  &__img {
+    width: 9rem;
+    height: 9rem;
+    max-width: 9rem;
+    max-height: 9rem;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

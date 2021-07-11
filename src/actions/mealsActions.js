@@ -27,17 +27,22 @@ export const removeUserRecipe = (recipe) => {
       console.log("Deleting Recipe", meal, id);
       const uid = getState().auth.uid;
 
-      const storeRecipes = getState().meals[meal].recipies;
-      console.log(storeRecipes);
+      const mealExist = await firebaseData
+        .ref(`users/${uid}/meals/${meal}/recipes`)
+        .once("value");
 
-      const emptyMeal = "N";
-      await firebaseData
-        .ref(`users/${uid}/meals/${meal}`)
-        .update({ recipes: { ...storeRecipes, ...emptyMeal } });
+      const mealExistValue = await mealExist.val();
+      const mealsLeft = Object.keys(mealExistValue);
 
-      await firebaseData.ref(`users/${uid}/meals/${meal}/recipes/${id}`).remove;
-
-      //if (checkRecipiesSnap === null)
+      if (mealsLeft.length === 1) {
+        await firebaseData
+          .ref(`users/${uid}/meals/${meal}`)
+          .set({ recipes: "recipe" });
+      } else {
+        await firebaseData
+          .ref(`users/${uid}/meals/${meal}/recipes/${id}`)
+          .set(null);
+      }
 
       dispatch(loadUserMeals());
     } catch (error) {
