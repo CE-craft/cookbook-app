@@ -6,6 +6,7 @@ import { filtersReducer } from "./filtersReducer";
 import { authReducer } from "./authReducer";
 import { holdRecipeReducer } from "./holdRecipeReducer";
 import { deletingrecipeRuducer } from "./deletingrecipeRuducer";
+import { widgetsReducer } from "./widgetsReducer";
 
 export const store = createStore(
   combineReducers({
@@ -15,6 +16,7 @@ export const store = createStore(
     holdrecipe: holdRecipeReducer,
     auth: authReducer,
     deletingrecipe: deletingrecipeRuducer,
+    recipewidgets: widgetsReducer,
   }),
   applyMiddleware(thunk)
 );

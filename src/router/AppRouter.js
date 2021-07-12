@@ -10,6 +10,7 @@ import { history } from "../helpers/history";
 import Header from "../components/Header";
 
 const AppRouter = (props) => {
+  // const currentHistory = history.location.pathname;
   return (
     <Router history={history}>
       <Header />

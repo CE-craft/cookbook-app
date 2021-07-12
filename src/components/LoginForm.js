@@ -11,10 +11,20 @@ const LoginForm = (props) => {
     props.startLogin(user);
   };
   return (
-    <form onSubmit={onSubmitHandler}>
-      <input className="input-field" type="email" name="email" />
-      <input className="input-field" type="password" name="password" />
-      <button>Login</button>
+    <form className="login__form" onSubmit={onSubmitHandler}>
+      <input
+        className="input-field"
+        type="email"
+        placeholder="Email"
+        name="email"
+      />
+      <input
+        className="input-field"
+        type="password"
+        placeholder="Password"
+        name="password"
+      />
+      <button className="btn-main btn-main--black">Login</button>
     </form>
   );
 };

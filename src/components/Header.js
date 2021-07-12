@@ -9,7 +9,7 @@ const Header = () => {
 
   return (
     <>
-      <header className="header">
+      <header className={"header"}>
         <div className="header__logo">CookBook</div>
         <ul className="header__links">
           <li>
@@ -19,7 +19,12 @@ const Header = () => {
             <NavLink to="/dashboard">Dashboard</NavLink>
           </li>
           <li>
-            <button onClick={logoutHandler}>Logout</button>
+            <button
+              className="btn-main btn-main--yellow"
+              onClick={logoutHandler}
+            >
+              Logout
+            </button>
           </li>
         </ul>
       </header>

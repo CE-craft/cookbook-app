@@ -61,7 +61,7 @@ const RecipeCard = ({
       <div className={"card__info"}>
         <div className="card__heading-wrapper">
           <h3 className="card__heading">
-            <Link to={`/recipe/${recipeId}`}> {titleSize(title)}</Link>
+            <Link to={`/recipe/${id}`}> {titleSize(title)}</Link>
           </h3>
           <span className={isSaved ? "tag--saved" : "hidden"}>Saved</span>
         </div>

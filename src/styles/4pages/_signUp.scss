@@ -1,0 +1,81 @@
+.signup {
+  background-color: $yellow;
+  position: relative;
+  width: 100vw;
+  height: 89.8vh;
+  overflow: hidden;
+
+  &__bg {
+    position: relative;
+    z-index: 5;
+    top: 10%;
+    background-color: $white;
+    display: flex;
+    padding: $space-L;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+    height: 60vh;
+    max-width: 30vw;
+    border-radius: 0.8rem;
+    -webkit-border-radius: 0.8rem;
+    -moz-border-radius: 0.8rem;
+    -ms-border-radius: 0.8rem;
+    -o-border-radius: 0.8rem;
+  }
+  &__logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    margin-top: -15rem;
+    border-radius: 0.8rem;
+    -webkit-border-radius: 0.8rem;
+    -moz-border-radius: 0.8rem;
+    -ms-border-radius: 0.8rem;
+    -o-border-radius: 0.8rem;
+    & p {
+      font-size: 8rem !important;
+      font-weight: 800;
+      letter-spacing: -0.8rem;
+      color: $yellow;
+    }
+  }
+  &__bg-img {
+    position: absolute;
+    z-index: 0;
+  }
+  & img {
+    max-width: 60vw;
+    max-height: auto;
+    left: -20%;
+    bottom: -50%;
+  }
+  &__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    & .input-field {
+      width: 30rem;
+    }
+    & > * {
+      margin-bottom: $space-S;
+    }
+  }
+  & p {
+    font-size: 1.6rem;
+    margin-bottom: $space-L;
+    max-width: 25rem;
+    text-align: center;
+    line-height: 150%;
+  }
+  & h1 {
+    font-family: "Playfair Display", serif;
+    font-size: 3.6rem;
+    margin-bottom: $space-S;
+  }
+  & button {
+    width: 30rem;
+  }
+}

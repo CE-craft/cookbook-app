@@ -1,0 +1,127 @@
+.login__page {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  overflow: hidden;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+.login-start {
+  background-color: $yellow;
+  position: relative;
+  & img {
+    max-width: 60vw;
+    max-height: auto;
+  }
+}
+
+.social-media {
+  display: flex;
+  align-items: center;
+  & > * {
+    margin-right: $space-L;
+  }
+  font-weight: 800;
+}
+
+.login-start__img {
+  position: absolute;
+  z-index: 0;
+  bottom: -40%;
+  right: -30%;
+}
+
+.login-start__text-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 80%;
+  margin: 10rem;
+  & h1 {
+    font-family: "Playfair Display", serif;
+    font-size: 6.2rem;
+    width: 43rem;
+    margin-bottom: $space-M;
+    line-height: 100%;
+  }
+  & p {
+    font-size: 1.6rem;
+    max-width: 20rem;
+  }
+}
+
+.login-container {
+  padding-top: $space-L;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  //   height: 100vh;
+}
+.login {
+  position: relative;
+  z-index: 2;
+  padding: $space-L;
+  background-color: $white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+  height: 89.9vh;
+  &__logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    margin-top: -15rem;
+    border-radius: 0.8rem;
+    -webkit-border-radius: 0.8rem;
+    -moz-border-radius: 0.8rem;
+    -ms-border-radius: 0.8rem;
+    -o-border-radius: 0.8rem;
+    & p {
+      font-size: 8rem !important;
+      font-weight: 800;
+      letter-spacing: -0.8rem;
+      color: $yellow;
+    }
+  }
+  & button {
+    width: 30rem;
+  }
+  &__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    & .input-field {
+      width: 30rem;
+    }
+    & > * {
+      margin-bottom: $space-S;
+    }
+  }
+  & p {
+    font-size: 1.6rem;
+    margin-bottom: $space-L;
+  }
+  & h1 {
+    font-family: "Playfair Display", serif;
+    font-size: 3.6rem;
+    margin-bottom: $space-S;
+  }
+}
+
+.login__link {
+  font-size: 1.6rem;
+  color: $grey;
+  text-decoration: underline;
+  transition: 0.3s ease-in-out;
+  -webkit-transition: 0.3s ease-in-out;
+  -moz-transition: 0.3s ease-in-out;
+  -ms-transition: 0.3s ease-in-out;
+  -o-transition: 0.3s ease-in-out;
+  &:hover {
+    color: $yellow;
+  }
+}

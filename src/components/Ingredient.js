@@ -3,9 +3,11 @@ const Ingredient = () => {
     <div className="ingredient">
       <div className="ingredient__img">
         <img src="" alt="" />
+        <p>Eggs</p>
       </div>
-      <p>Eggs</p>
-      <p className="ingredient__quantity"> 2 </p>
+      <div className="ingredient__quantity">
+        <p> 2 </p>
+      </div>
     </div>
   );
 };

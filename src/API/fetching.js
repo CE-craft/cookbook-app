@@ -7,13 +7,39 @@ const RECIPIES_DEFAULT = 50;
 
 // random recipies : https://api.spoonacular.com/recipes/random?number=1&tags=vegetarian,dessert
 
+const getJson = async (link) => {
+  const promise = await fetch(link);
+  const fullfiled = await promise.json();
+
+  return fullfiled;
+};
+
+export const fetchingWidgets = async (id) => {
+  const widgets = await Promise.all([
+    getJson(
+      `https://api.spoonacular.com/recipes/${id}/ingredientWidget.json${API_KEY}`
+    ),
+    getJson(
+      `https://api.spoonacular.com/recipes/${id}/nutritionWidget.json${API_KEY}`
+    ),
+  ]);
+
+  return widgets;
+};
+
 export const getRecipesListData = async (recipesNum = RECIPIES_DEFAULT) => {
   const data = await fetch(
     `https://api.spoonacular.com/recipes/random${API_KEY}&number=${recipesNum}`
   );
 
   const recipesData = await data.json();
-  console.log(recipesData);
+  console.log("Recipes data list :", recipesData);
+
+  // recipesData.recipes.forEach(async (recipe) => {
+  //   const widgets = await fetchingWidgets(recipe.id);
+  //   recipe.widgets = { ...widgets };
+  // });
+  // console.log(recipesData);
 
   return recipesData;
 };
@@ -44,8 +70,8 @@ export const getRecipiesSearch = async (query) => {
   const fetchRecipes = await fetch(
     `https://api.spoonacular.com/recipes/complexSearch${API_KEY}&query=${query}&number=${RECIPIES_DEFAULT}`
   );
+
   const recipes = await fetchRecipes.json();
-  console.log("FETCHING getRecipiesSearch :", recipes);
 
   return recipes.results;
 };

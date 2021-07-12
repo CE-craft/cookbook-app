@@ -2,8 +2,12 @@
   padding: $space-M 0 $space-L 0;
   background-color: $yellow;
   color: $black;
-
   & p {
+    margin-top: $space-S;
     font-size: 1.6rem;
+    max-width: 29rem;
+  }
+  & h1 {
+    line-height: 110%;
   }
 }
