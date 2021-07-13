@@ -1,6 +1,6 @@
 import { ReactComponent as PlusSign } from "../imgs/plusSign.svg";
 import { ReactComponent as MinusSign } from "../imgs/minus.svg";
-import { Link } from "react-router-dom";
+//import { Link, Redirect } from "react-router-dom";
 import { history } from "../helpers/history";
 import { connect } from "react-redux";
 //import { removeUserRecipe } from "../actions/mealsActions";
@@ -8,7 +8,8 @@ import { holdRecipeStore } from "../actions/holdRecipeActions";
 import { holdRecipe } from "../actions/holdRecipeActions";
 
 //import { ReactComponent as Close } from "../imgs/close.svg";
-import { store } from "../store/store";
+//import { store } from "../store/store";
+import { getRecipeWidgets } from "../actions/widgetsActions";
 
 const RecipeCard = ({
   id,
@@ -22,11 +23,15 @@ const RecipeCard = ({
   removeRecipeFromMeal,
   ...props
 }) => {
+  const getRecipeWidgetsData = async () => {
+    await props.dispatch(getRecipeWidgets(id || recipeId));
+    history.push(`/recipe/${id || recipeId}`);
+  };
+
   const showConfirmModal = () => {
     showModalToDelete(true);
     const recipe = { id: recipeId.toString(), meal: meal };
     props.dispatch(holdRecipe(recipe));
-    console.log(store.getState());
   };
 
   const showMealsModal = () => {
@@ -60,8 +65,8 @@ const RecipeCard = ({
       />
       <div className={"card__info"}>
         <div className="card__heading-wrapper">
-          <h3 className="card__heading">
-            <Link to={`/recipe/${id}`}> {titleSize(title)}</Link>
+          <h3 className="card__heading" onClick={getRecipeWidgetsData}>
+            {titleSize(title)}
           </h3>
           <span className={isSaved ? "tag--saved" : "hidden"}>Saved</span>
         </div>

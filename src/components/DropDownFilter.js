@@ -2,10 +2,10 @@ import { filterRecipesByTag } from "../actions/filterActions";
 import { connect } from "react-redux";
 
 const DropDownFilter = (props) => {
-  console.log(props.tags);
+  // console.log(props.tags);
 
   const filterHandler = (e) => {
-    console.log(e.target.value);
+    //console.log(e.target.value);
     props.dispatch(filterRecipesByTag(e.target.value));
   };
   return (

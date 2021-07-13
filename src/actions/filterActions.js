@@ -10,13 +10,16 @@ export const filterBySearch = (searchValue) => ({
   searchValue,
 });
 
+let existingRecipes = [];
 export const filterRecipesByTag = (tag) => {
   return (dispatch, getState) => {
     console.log(tag);
     dispatch(filterByTag(tag));
-    const [...existingRecipes] = getState().recipes.recipes;
+
+    existingRecipes = getState().recipes.recipes;
+    const currArray = [...existingRecipes];
     console.log(existingRecipes);
-    const filteredRecipes = existingRecipes.filter((recipe) => !recipe[tag]);
+    const filteredRecipes = currArray.filter((recipe) => !recipe[tag]);
     //console.log(filteredRecipes);
     tag !== "empty"
       ? dispatch(getRecipesList(filteredRecipes))

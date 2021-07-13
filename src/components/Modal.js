@@ -24,7 +24,7 @@ const Modal = ({ givenClass, modalState, deleteRecipe }) => {
           <p>Do you really want to remove this recipe ?</p>
           <button
             onClick={confirmDeletion}
-            className="btn__main btn__main--black"
+            className="btn-main btn-main--black"
           >
             Delete recipe
           </button>

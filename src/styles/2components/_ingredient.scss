@@ -1,18 +1,31 @@
 .ingredient {
   border-top: 1px solid $black;
   display: grid;
-  grid-template-columns: 1fr 3fr;
+  grid-template-columns: 0.5fr 1fr 3fr;
+
+  align-items: center;
+  &__name {
+    font-size: 1.6rem;
+    font-weight: 700;
+  }
   max-height: 10rem;
+  & img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 0.8rem;
+  }
   &__img {
-    width: 9rem;
-    height: 9rem;
-    max-width: 9rem;
-    max-height: 9rem;
+    width: 10rem;
+    height: 10rem;
+    max-width: 10rem;
+    max-height: 10rem;
     padding: 1.5rem;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 1.6rem;
+    margin-right: $space-L;
   }
   &__quantity {
     display: flex;

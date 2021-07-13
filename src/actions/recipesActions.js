@@ -5,13 +5,12 @@ export const getRecipesList = (recipes = []) => ({
   recipes,
 });
 
-export const loadRecipesList = (recipes) => {
-  console.log("loadRecipesList");
+export const loadRecipesList = () => {
   return async (dispatch, getState) => {
-    const data = await getRecipesListData(recipes);
-    console.log(data);
+    const data = await getRecipesListData();
+    console.log("Load recipe Action ", data);
     dispatch(getRecipesList(data.recipes));
-    console.log("Recipies after fetching", getState().recipes);
+    console.log("Load Recipies after fetching", getState().recipes);
   };
 };
 

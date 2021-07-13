@@ -5,10 +5,13 @@
   column-gap: $space-XL;
 }
 .recipe__img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 0.8rem;
+  & img {
+    object-fit: cover;
+    width: 100%;
+    max-height: 46.8rem;
+    border-radius: 0.8rem;
+  }
+  margin-top: $space-L;
 }
 
 .recipe__info {
@@ -63,6 +66,10 @@
 .recipe__ingredients {
   display: flex;
   flex-direction: column;
+  & h2 {
+    margin: $space-M 0;
+    font-size: 2.4rem;
+  }
 }
 
 .recipe__nutrients {

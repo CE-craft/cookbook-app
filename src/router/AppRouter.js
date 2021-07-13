@@ -3,24 +3,25 @@ import Dashboard from "../pages/Dashboard";
 import ListPage from "../pages/ListPage";
 import LoginPage from "../pages/LoginPage";
 import SignUpPage from "../pages/SignUpPage";
-import MealPage from "../pages/MealPage";
+//import MealPage from "../pages/MealPage";
 import RecipePage from "../pages/RecipePage";
 import NotFound from "../pages/NotFound";
 import { history } from "../helpers/history";
-import Header from "../components/Header";
+//import Header from "../components/Header";
+import PrivateRoute from "./PrivateRoute";
+import PublicRoute from "./PublicRoute";
 
 const AppRouter = (props) => {
   // const currentHistory = history.location.pathname;
   return (
     <Router history={history}>
-      <Header />
+      {/* <Header /> */}
       <Switch>
-        <Route path="/" component={LoginPage} exact />
-        <Route path="/dashboard" component={Dashboard} />
-        <Route path="/signup" component={SignUpPage} />
-        <Route path="/recipe/:id" component={RecipePage} />
-        <Route path="/meal/:id" component={MealPage} />
-        <Route path="/recipeslist" component={ListPage} />
+        <PublicRoute path="/" component={LoginPage} exact />
+        <PrivateRoute path="/dashboard" component={Dashboard} />
+        <PublicRoute path="/signup" component={SignUpPage} />
+        <PrivateRoute path="/recipe/:id" component={RecipePage} />
+        <PrivateRoute path="/recipeslist" component={ListPage} />
         <Route component={NotFound} />
       </Switch>
     </Router>

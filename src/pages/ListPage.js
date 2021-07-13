@@ -7,6 +7,9 @@ import { useState } from "react";
 import { connect } from "react-redux";
 
 const ListPage = (props) => {
+  // props.dispatch(loadUserMeals());
+  // props.dispatch(getRecipesList(data.recipes))
+
   let isOpen = false;
   const [opned, setOpen] = useState(isOpen);
 

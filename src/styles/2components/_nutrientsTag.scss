@@ -1,8 +1,9 @@
 .nutrient-tag {
+  margin-right: $space-S;
   width: 12rem;
   height: 12rem;
-  max-width: 12rem;
-  max-height: 12rem;
+  max-width: 10rem;
+  max-height: 10rem;
   background-color: $faded-yellow;
   display: flex;
   flex-direction: column;
@@ -15,12 +16,12 @@
   -ms-border-radius: 0.8rem;
   -o-border-radius: 0.8rem;
   & p {
-    font-size: 1.6rem;
+    font-size: 1.2rem !important;
     color: $dark-grey;
     margin-bottom: $space-S;
   }
   & h2 {
-    font-size: 3.6rem;
+    font-size: 2.1rem;
     font-weight: 800;
     color: $black;
   }

@@ -1,5 +1,8 @@
+import { store } from "../store/store";
+
 const API_KEY = "?apiKey=3e1586a919c94e7e9b20c857454d27ef";
 const RECIPIES_DEFAULT = 50;
+
 // //https://spoonacular.com/food-api/docs#Authentication
 // // https://spoonacular.com/food-api
 
@@ -23,6 +26,9 @@ export const fetchingWidgets = async (id) => {
       `https://api.spoonacular.com/recipes/${id}/nutritionWidget.json${API_KEY}`
     ),
   ]);
+
+  console.log("Widgets fetching", widgets);
+  console.log("After widget fetching", store.getState());
 
   return widgets;
 };

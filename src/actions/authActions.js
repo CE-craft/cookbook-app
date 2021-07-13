@@ -25,7 +25,6 @@ export const startLogin = (user) => {
 export const logout = () => ({ type: "LOGOUT" });
 
 export const requestAccountCreation = (user) => {
-  console.log(user);
   const { email, password } = user;
   return async () => {
     try {

@@ -5,20 +5,28 @@ import SubHeader from "../components/SubHeader";
 import { ReactComponent as Time } from "../imgs/time.svg";
 import { ReactComponent as Dollar } from "../imgs/dollar.svg";
 import { connect } from "react-redux";
-import { getRecipeWidgets } from "../actions/widgetsActions";
+import { store } from "../store/store";
 
 const RecipePage = (props) => {
+  console.log(store.getState());
+  console.log(props.widgets);
+
   const id = +props.match.params.id;
   const recipe = props.recipes.find((recipe) => recipe.id === id);
-  props.dispatch(getRecipeWidgets(id));
-
-  const nutrients = Object.keys(props.widgets[1]);
+  console.log(recipe);
+  // const nutrients = Object.keys(props.widgets[1].bad);
+  // console.log(nutrients);
 
   return (
     <>
-      <SubHeader />
+      <SubHeader
+        heading={"Recipie details"}
+        description={"cooking Instructions, nutrients and ingredients"}
+      />
       <Container>
-        <img className="recipe__img" src="" alt="" />
+        <div className="recipe__img">
+          <img src={recipe.image} alt={recipe.title} />
+        </div>
         <div className="recipe__details">
           <div className="recipe__info">
             <h2>{recipe.title}</h2>
@@ -35,10 +43,10 @@ const RecipePage = (props) => {
           <div className="recipe__preparation">
             <p className="recipe__preparation-text">{recipe.instructions}</p>
             <div className="recipe__nutrients">
-              {nutrients.map((nutrient) => (
+              {props.widgets[1].bad.map((nutrient) => (
                 <NutrientsTag
-                  nutrientName={nutrient}
-                  nutrientValue={props.widgets[1][nutrient]}
+                  nutrientName={nutrient.title}
+                  nutrientValue={nutrient.amount}
                 />
               ))}
             </div>
@@ -46,8 +54,16 @@ const RecipePage = (props) => {
         </div>
         <div className="recipe__ingredients">
           <h2>Ingeredients</h2>
-          <div className="line"></div>
-          <Ingredient />
+
+          {props.widgets[0].ingredients.map((ingredient) => (
+            <Ingredient
+              key={ingredient.name}
+              name={ingredient.name}
+              image={`https://spoonacular.com/cdn/ingredients_100x100/${ingredient.image}`}
+              amount={ingredient.amount.metric.value}
+              unit={ingredient.amount.metric.unit}
+            />
+          ))}
         </div>
       </Container>
     </>
