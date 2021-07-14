@@ -16,6 +16,7 @@ const ListPage = (props) => {
   const mealsModal = (open) => {
     setOpen(open);
   };
+  const list = props.filter ? props.filteredrecipes : props.recipes;
 
   const title = "Healthy recipies for your daily meals";
   return (
@@ -28,7 +29,7 @@ const ListPage = (props) => {
       <Container>
         <FiltersArea />
         <div className="list-grid">
-          {props.recipes.map((recipe) => {
+          {list.map((recipe) => {
             return (
               <RecipeCard
                 id={recipe.id}
@@ -47,6 +48,7 @@ const ListPage = (props) => {
 
 const mapStateToProps = (state) => ({
   recipes: state.recipes.recipes,
-  page: state.recipes.page,
+  filteredrecipes: state.filters.filtered,
+  filter: state.filters.tag,
 });
 export default connect(mapStateToProps)(ListPage);

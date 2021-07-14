@@ -1,5 +1,5 @@
 //import { getRecipiesSearch } from "../API/fetching";
-import { getRecipesList } from "../actions/recipesActions";
+//import { getRecipesList } from "../actions/recipesActions";
 export const filterByTag = (tag) => ({
   type: "FILTER_TAG",
   tag,
@@ -9,20 +9,23 @@ export const filterBySearch = (searchValue) => ({
   type: "SEARCH",
   searchValue,
 });
+export const filterdRecipes = (recipes = []) => ({
+  type: "FILTER_RECIPES",
+  recipes,
+});
 
-let existingRecipes = [];
 export const filterRecipesByTag = (tag) => {
   return (dispatch, getState) => {
-    console.log(tag);
+    let existingRecipes = getState().recipes.recipes;
+    dispatch(filterdRecipes(existingRecipes));
     dispatch(filterByTag(tag));
 
-    existingRecipes = getState().recipes.recipes;
-    const currArray = [...existingRecipes];
-    console.log(existingRecipes);
+    const currArray = getState().filters.filtered;
+
     const filteredRecipes = currArray.filter((recipe) => !recipe[tag]);
-    //console.log(filteredRecipes);
+
     tag !== "empty"
-      ? dispatch(getRecipesList(filteredRecipes))
-      : dispatch(getRecipesList(existingRecipes));
+      ? dispatch(filterdRecipes(filteredRecipes))
+      : dispatch(filterdRecipes(existingRecipes));
   };
 };

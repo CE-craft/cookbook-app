@@ -7,7 +7,6 @@ const SearchField = (props) => {
   const [value, setValue] = useState("");
 
   const chekInput = (e) => {
-    console.log(e.target.value);
     setValue(e.target.value);
 
     props.dispatch(filterBySearch(e.target.value));
