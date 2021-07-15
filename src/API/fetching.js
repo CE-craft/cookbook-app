@@ -1,7 +1,7 @@
-import { store } from "../store/store";
+//import { store } from "../store/store";
 
 const API_KEY = "?apiKey=3e1586a919c94e7e9b20c857454d27ef";
-const RECIPIES_DEFAULT = 50;
+const RECIPIES_DEFAULT = 20;
 
 // //https://spoonacular.com/food-api/docs#Authentication
 // // https://spoonacular.com/food-api
@@ -27,9 +27,6 @@ export const fetchingWidgets = async (id) => {
     ),
   ]);
 
-  console.log("Widgets fetching", widgets);
-  console.log("After widget fetching", store.getState());
-
   return widgets;
 };
 
@@ -39,13 +36,6 @@ export const getRecipesListData = async (recipesNum = RECIPIES_DEFAULT) => {
   );
 
   const recipesData = await data.json();
-  console.log("Recipes data list :", recipesData);
-
-  // recipesData.recipes.forEach(async (recipe) => {
-  //   const widgets = await fetchingWidgets(recipe.id);
-  //   recipe.widgets = { ...widgets };
-  // });
-  // console.log(recipesData);
 
   return recipesData;
 };
@@ -79,5 +69,14 @@ export const getRecipiesSearch = async (query) => {
 
   const recipes = await fetchRecipes.json();
 
-  return recipes.results;
+  const recipesResult = await Promise.all(
+    recipes.results.map((recipe) =>
+      getJson(
+        `https://api.spoonacular.com/recipes/${recipe.id}/information${API_KEY}`
+      )
+    )
+  );
+
+  console.log(recipesResult);
+  return recipesResult;
 };

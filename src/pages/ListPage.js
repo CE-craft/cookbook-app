@@ -5,7 +5,7 @@ import AddToMealsModal from "../components/AddToMealsModal";
 import FiltersArea from "../components/FiltersArea";
 import { useState } from "react";
 import { connect } from "react-redux";
-
+//import { store } from "../store/store";
 const ListPage = (props) => {
   // props.dispatch(loadUserMeals());
   // props.dispatch(getRecipesList(data.recipes))
@@ -13,10 +13,23 @@ const ListPage = (props) => {
   let isOpen = false;
   const [opned, setOpen] = useState(isOpen);
 
+  //let currList = props.recipes;
+  //const [loadList, setList] = useState(currList);
+
   const mealsModal = (open) => {
     setOpen(open);
   };
-  const list = props.filter ? props.filteredrecipes : props.recipes;
+
+  // const getList = (list) => {
+  //   if (list) setList(list);
+  // };
+
+  const listing =
+    props.filter || props.filterBySearch
+      ? props.filteredrecipes
+      : props.recipes;
+
+  //console.log(store.getState());
 
   const title = "Healthy recipies for your daily meals";
   return (
@@ -29,7 +42,7 @@ const ListPage = (props) => {
       <Container>
         <FiltersArea />
         <div className="list-grid">
-          {list.map((recipe) => {
+          {listing?.map((recipe) => {
             return (
               <RecipeCard
                 id={recipe.id}
@@ -50,5 +63,6 @@ const mapStateToProps = (state) => ({
   recipes: state.recipes.recipes,
   filteredrecipes: state.filters.filtered,
   filter: state.filters.tag,
+  search: state.filters.search,
 });
 export default connect(mapStateToProps)(ListPage);

@@ -1,6 +1,7 @@
 import firebase from "firebase/app";
-import { firebaseData } from "../firebase/firebase";
+import { firebaseData, getUsersData } from "../firebase/firebase";
 //import { createUserWithEmailAndPassword } from "firebase/auth";
+import { catchError, hideError } from "../actions/errorActions";
 
 export const login = (uid) => ({ type: "LOGIN", uid });
 
@@ -9,15 +10,23 @@ export const startLogin = (user) => {
 
   return async (dispatch) => {
     try {
+      const users = await getUsersData();
+
+      let emailExists = true;
+      users.forEach((user) => {
+        if (user.email === email) return (emailExists = false);
+      });
+      if (emailExists)
+        throw new Error("Your email does not exist please create an account");
+
       const userCredential = await firebase
         .auth()
         .signInWithEmailAndPassword(email, password);
       const loggedUser = userCredential.user;
       dispatch(login(loggedUser.uid));
     } catch (error) {
-      const errorCode = error.code;
-      const errorMessage = "Connot use those credentials";
-      console.log(errorCode, errorMessage);
+      dispatch(catchError(error.message));
+      setTimeout(() => dispatch(hideError()), 8000);
     }
   };
 };
@@ -26,8 +35,17 @@ export const logout = () => ({ type: "LOGOUT" });
 
 export const requestAccountCreation = (user) => {
   const { email, password } = user;
-  return async () => {
+
+  return async (dispatch) => {
     try {
+      // const users = await getUsersData();
+      // let emailExists = false;
+      // users.forEach((user) => {
+      //   if (user.email === email) return (emailExists = true);
+      // });
+      // if (emailExists) {
+      //   throw new Error("You already have an account please login instead");}
+
       const userCredential = await firebase
         .auth()
         .createUserWithEmailAndPassword(email, password);
@@ -58,9 +76,12 @@ export const requestAccountCreation = (user) => {
       userData[uid] = currentUsers;
       await usersRef.update(userData);
     } catch (error) {
-      const errorCode = error.code;
-      const errorMessage = "Connot use those credentials";
-      console.log(errorCode, errorMessage);
+      console.log("AuthAction", error);
+
+      // console.log(newError);
+      // dispatch(catchError(error.message));
+      // setTimeout(() => dispatch(hideError()), 8000);
+      //throw error;
     }
   };
 };

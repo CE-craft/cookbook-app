@@ -3,7 +3,8 @@ import { ReactComponent as Close } from "../imgs/close.svg";
 import { caps } from "../helpers/firstLetterCaps";
 import { saveRecipeFirebase } from "../actions/holdRecipeActions";
 import { connect } from "react-redux";
-import { store } from "../store/store";
+import { sendFeedback, clearFeedback } from "../actions/feedbackActions";
+//import { store } from "../store/store";
 
 const AddToMealsModal = ({ givenClass, mealsModal, ...props }) => {
   const meals = Object.keys(props.meals);
@@ -41,15 +42,20 @@ const AddToMealsModal = ({ givenClass, mealsModal, ...props }) => {
                 <h3 className="modal-widow__list-item__heading">
                   {caps(meal)}
                 </h3>
+
                 <div
                   onClick={(e) => {
                     /*const meal = e.target.dataset.meal;*/
-                    console.log(meal);
+                    //console.log(meal);
                     const recipe = props.holdrecipe;
                     const uid = props.uid;
 
                     props.dispatch(saveRecipeFirebase(recipe, uid, meal));
-                    console.log(store.getState());
+
+                    props.dispatch(sendFeedback(meal));
+                    setTimeout(() => {
+                      props.dispatch(clearFeedback());
+                    }, 5000);
                   }}
                   data-meal={meal}
                   className="btn-large"
@@ -71,6 +77,9 @@ const AddToMealsModal = ({ givenClass, mealsModal, ...props }) => {
                 <PlusSign />
               </div>
             </div> */}
+            <div className={props.feedback ? "added-recipe" : "hidden"}>
+              <p>{props.feedback ? props.feedback : ""}</p>
+            </div>
           </div>
         </div>
       </div>
@@ -82,6 +91,8 @@ const mapStateToProps = (state) => ({
   meals: state.meals,
   holdrecipe: state.holdrecipe,
   uid: state.auth.uid,
+  feedback: state.feedback.added,
+  errors: state.error,
 });
 
 export default connect(mapStateToProps)(AddToMealsModal);

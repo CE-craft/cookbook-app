@@ -7,6 +7,8 @@ import { authReducer } from "./authReducer";
 import { holdRecipeReducer } from "./holdRecipeReducer";
 import { deletingrecipeRuducer } from "./deletingrecipeRuducer";
 import { widgetsReducer } from "./widgetsReducer";
+import { errorReducer } from "./errorReducer";
+import { feedbackReducer } from "./feedbackReducer";
 
 export const store = createStore(
   combineReducers({
@@ -17,6 +19,8 @@ export const store = createStore(
     auth: authReducer,
     deletingrecipe: deletingrecipeRuducer,
     recipewidgets: widgetsReducer,
+    errors: errorReducer,
+    feedback: feedbackReducer,
   }),
   applyMiddleware(thunk)
 );

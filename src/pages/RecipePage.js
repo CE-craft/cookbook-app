@@ -5,15 +5,15 @@ import SubHeader from "../components/SubHeader";
 import { ReactComponent as Time } from "../imgs/time.svg";
 import { ReactComponent as Dollar } from "../imgs/dollar.svg";
 import { connect } from "react-redux";
-import { store } from "../store/store";
+//import { store } from "../store/store";
 
 const RecipePage = (props) => {
-  console.log(store.getState());
-  console.log(props.widgets);
+  // console.log(store.getState());
+  // console.log(props.widgets);
 
   const id = +props.match.params.id;
   const recipe = props.recipes.find((recipe) => recipe.id === id);
-  console.log(recipe);
+  //console.log(recipe);
   // const nutrients = Object.keys(props.widgets[1].bad);
   // console.log(nutrients);
 

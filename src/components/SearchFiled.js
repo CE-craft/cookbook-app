@@ -11,12 +11,17 @@ const SearchField = (props) => {
 
     props.dispatch(filterBySearch(e.target.value));
   };
-  const searchHandler = (e) => {
+  const searchHandler = async (e) => {
     e.preventDefault();
 
     const searchValue = e.target.elements.search.value;
 
-    props.dispatch(getRecipesBySearch(searchValue));
+    await props.dispatch(getRecipesBySearch(searchValue));
+    // const list =
+    //   props.filter || props.filterBySearch
+    //     ? props.filteredrecipes
+    //     : props.recipes;
+    //console.log(list);
   };
   return (
     <form onSubmit={searchHandler}>
@@ -35,6 +40,9 @@ const SearchField = (props) => {
 };
 const mapStateToProps = (state) => ({
   filterBySearch: state.filters.search,
+  recipes: state.recipes.recipes,
+  filteredrecipes: state.filters.filtered,
+  search: state.filters.search,
 });
 
 export default connect(mapStateToProps)(SearchField);

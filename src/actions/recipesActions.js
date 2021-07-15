@@ -7,7 +7,7 @@ export const getRecipesList = (recipes = []) => ({
 });
 
 export const loadRecipesList = () => {
-  return async (dispatch, getState) => {
+  return async (dispatch) => {
     const data = await getRecipesListData();
 
     dispatch(getRecipesList(data.recipes));
@@ -19,6 +19,7 @@ export const getRecipesBySearch = () => {
     const seachValue = getState().filters.search;
 
     const recipiesData = await getRecipiesSearch(seachValue);
+    console.log(recipiesData);
     dispatch(getRecipesList(recipiesData));
     dispatch(filterdRecipes(recipiesData));
   };

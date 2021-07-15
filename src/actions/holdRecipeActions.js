@@ -1,6 +1,7 @@
 import { getRecipe } from "../API/fetching";
 import { firebaseData } from "../firebase/firebase";
 import { loadUserMeals } from "./mealsActions";
+import { sendFeedbackError, clearFeedback } from "../actions/feedbackActions";
 //import { store } from "../store/store";
 
 export const holdRecipe = (recipe = {}) => ({
@@ -54,6 +55,9 @@ export const saveRecipeFirebase = (recipe, uid, meal) => {
       dispatch(loadUserMeals());
     } catch (error) {
       console.log(error);
+      const newError = error.toString();
+      dispatch(sendFeedbackError(newError));
+      setTimeout(() => dispatch(clearFeedback()), 5000);
     }
   };
 };

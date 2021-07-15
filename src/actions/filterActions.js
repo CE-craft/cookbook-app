@@ -22,7 +22,7 @@ export const filterRecipesByTag = (tag) => {
 
     const currArray = getState().filters.filtered;
 
-    const filteredRecipes = currArray.filter((recipe) => !recipe[tag]);
+    const filteredRecipes = currArray.filter((recipe) => recipe[tag]);
 
     tag !== "empty"
       ? dispatch(filterdRecipes(filteredRecipes))

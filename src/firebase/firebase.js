@@ -33,3 +33,24 @@ export const getMealsData = async (uid) => {
 
   return meals;
 };
+
+export const getUsersData = async () => {
+  const users = await firebaseData.ref("users").once("value");
+  //console.log(users.val());
+  // const existingUsers = users.val();
+  const usersArr = [];
+  users.forEach((user) => {
+    // console.log(user.val().ids);
+    usersArr.push(user.val().ids);
+  });
+
+  //console.log(usersArr);
+  return usersArr;
+};
+
+export const getUsersEmails = async () => {
+  const users = await getUsersData();
+  const usersEmails = users.map((user) => user.email);
+
+  return usersEmails;
+};

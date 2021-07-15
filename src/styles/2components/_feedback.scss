@@ -1,0 +1,24 @@
+.added-recipe {
+  padding-top: $space-S;
+  background-color: $faded-yellow;
+  color: $black;
+  padding: 1.5rem;
+  max-height: 3rem;
+  font-size: 1.6rem;
+  font-weight: 700;
+  border-radius: 0.4rem;
+  -webkit-border-radius: 0.4rem;
+  -moz-border-radius: 0.4rem;
+  -ms-border-radius: 0.4rem;
+  -o-border-radius: 0.4rem;
+}
+
+.error__form {
+  padding: 1.5rem;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: $error-dark;
+  background-color: $error;
+  border-radius: 0.4rem;
+  max-width: 30rem;
+}

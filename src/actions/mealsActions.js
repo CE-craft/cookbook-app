@@ -15,7 +15,7 @@ export const loadUserMeals = () => {
 
       dispatch(getMeals(meals));
     } catch (error) {
-      console.log("Cant Load User meals from firebase", error);
+      //console.log("Cant Load User meals from firebase", error);
     }
   };
 };

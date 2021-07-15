@@ -1,7 +1,7 @@
 import DropDownFilter from "./DropDownFilter";
 import SearchField from "./SearchFiled";
 
-const FiltersArea = () => {
+const FiltersArea = (props) => {
   const tags = [
     "vegetarian",
     "vegan",
@@ -16,7 +16,7 @@ const FiltersArea = () => {
         <div className="filters__separator">
           <h2 className="filters__heading">Filter recipies</h2>
           <div className="filters__container">
-            <SearchField />
+            <SearchField getList={props.getList} />
             <DropDownFilter tags={tags} />
           </div>
         </div>
